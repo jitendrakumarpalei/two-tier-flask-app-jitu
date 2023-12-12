@@ -14,14 +14,17 @@ spec:
       labels:
         app: flaskapp
     spec:
+      imagePullSecrets:
+      - name: my-registry-key 
       containers:
       - name: flaskapp
-        image: chinmayapradhan/flaskapp:1.0
+        image: jitendrapalei/flask-app:v1
+        imagePullPolicy: Always 
         ports:
         - containerPort: 5000
         env:
         - name: MYSQL_HOST
-          value: "10.102.92.38"
+          value: "10.100.207.138"
         - name: MYSQL_USER
           value: "root"
         - name: MYSQL_PASSWORD

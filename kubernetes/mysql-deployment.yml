@@ -32,10 +32,11 @@ spec:
         - name: MYSQL_PASSWORD
           value: "admin"
         volumeMounts:
-        - name: mysqldata
-          mountPath: /var/lib/mysql
+        - name: mysql-initdb
+          mountPath: docker-entrypoint-initdb.d
 
-      volumes: 
-      - name: mysqldata
-        persistentVolumeClaim:
-          claimName: mysql-pvc
+
+      volumes:
+        - name: mysql-initdb
+          configMap:
+            name: mysql-initdb-config     #Configmap Name
